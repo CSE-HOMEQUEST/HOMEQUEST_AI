@@ -86,3 +86,5 @@ functions/.runtimeconfig.json
 homequest_ai_server/data/*.csv
 homequest_ai_server/.venv/
 homequest_ai_server/venv/
+
+homequest_ai_server/firebase-service-account.json
