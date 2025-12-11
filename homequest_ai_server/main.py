@@ -3,8 +3,11 @@ from google.cloud import storage
 from pydantic import BaseModel
 import pandas as pd
 import io
+from pydantic import BaseModel
+from typing import Any, Dict, List
 
 from homequest_ai_final import run_recommendation
+from weekly_ai_report import generate_weekly_ai_report
 
 app = FastAPI()
 
@@ -50,3 +53,19 @@ def recommend(req: RecommendRequest):
         top_k=req.top_k,
     )
     return result
+
+# ==============================
+#  GPT 주간 리포트 엔드포인트
+# ==============================
+
+
+class WeeklyAiReportRequest(BaseModel):
+    period: Dict[str, str]
+    today_success_count: int
+    category_streaks: Dict[str, int]
+    weekly_contributions: List[Dict[str, Any]]
+
+
+@app.post("/ai/weekly-report")
+def weekly_report(req: WeeklyAiReportRequest):
+    return generate_weekly_ai_report(req.dict())

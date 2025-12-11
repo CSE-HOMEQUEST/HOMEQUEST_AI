@@ -1,0 +1,9 @@
+fastapi
+google-cloud-storage
+pydantic
+pandas
+openai
+scikit-learn
+numpy
+uvicorn
+gunicorn
