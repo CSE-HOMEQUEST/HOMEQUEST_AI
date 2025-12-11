@@ -2,6 +2,7 @@
 import os
 from openai import OpenAI
 
+# Cloud Run의 환경변수에서 API 키를 읽음
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 

@@ -3,10 +3,8 @@ from google.cloud import storage
 from pydantic import BaseModel
 import pandas as pd
 import io
-import os
-from openai import OpenAI
 from pydantic import BaseModel
-from typing import Any, Optional, Dict, List
+from typing import Any, Dict, List
 
 from homequest_ai_final import run_recommendation
 from weekly_ai_report import generate_weekly_ai_report
@@ -17,9 +15,6 @@ app = FastAPI()
 SERVICE_ACCOUNT = "firebase-service-account.json"  # 같은 폴더에 있는 서비스 계정 키
 BUCKET_NAME = "homequest-dev.firebasestorage.app"
 FILE_PATH = "homequest_simulated_6months.csv"
-
-# OpenAI 설정
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def load_csv_from_storage():
